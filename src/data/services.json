@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Minecraft Server",
+    "value": "minecraft",
+    "path": "/hdd/steam/minecraft",
+    "composeFile": "docker-compose.yaml",
+    "launchOptions": ""
+  },
+  {
+    "name": "Factorio Server",
+    "value": "factorio",
+    "path": "/hdd/steam/factorio",
+    "composeFile": "docker-compose.yaml",
+    "launchOptions": ""
+  }
+]
