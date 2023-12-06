@@ -12,5 +12,12 @@
     "path": "/hdd/steam/factorio",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
+  },
+  {
+    "name": "Satisfactory Server",
+    "value": "satisfactory",
+    "path": "/hdd/steam/satisfactory",
+    "composeFile": "docker-compose.yaml",
+    "launchOptions": ""
   }
 ]
