@@ -1,7 +1,7 @@
 # Discord Webhook for Docker Service Management
 
 ## Overview
-This application leverages Discord's Interaction API to manage Docker services via Discord commands. Built with Node.js, it offers a convenient way to start and stop Docker services using Discord's slash commands with autocomplete functionality. The application is available on [GitHub](https://github.com/Chrisae9/discord-interactions-webhook).
+This application leverages Discord's Interaction API to manage Docker services via Discord commands. Built with Node.js, it offers a convenient way to start and stop Docker services using Discord's slash commands with autocomplete functionality.
 
 ## Features
 - **Slash Commands with Autocomplete**: Execute predefined slash commands within Discord, utilizing the autocomplete feature for enhanced user interaction.
