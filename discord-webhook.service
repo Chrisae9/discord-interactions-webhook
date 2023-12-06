@@ -1,0 +1,13 @@
+[Unit]
+Description=Discord Webhook Service
+After=network.target
+
+[Service]
+Type=simple
+User=chis
+WorkingDirectory=/hdd/discord-interactions-webhook
+ExecStart=/usr/bin/npm start
+Restart=unless-stopped
+
+[Install]
+WantedBy=multi-user.target
