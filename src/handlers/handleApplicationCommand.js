@@ -11,7 +11,10 @@ function handleApplicationCommand(interaction) {
     
             // Immediately acknowledge the interaction
             return {
-                type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+                type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE,
+                data: {
+                    flags: 64 // Attempt to make the message ephemeral
+                }
             };
     }
 }

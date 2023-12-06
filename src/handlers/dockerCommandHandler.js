@@ -36,9 +36,14 @@ function runDockerCompose(serviceValue, action, interactionToken) {
         const combinedOutput = stdout.trim() + '\n' + stderr.trim();
         const title = `Request: ${service.name}`;
         let formattedOutput = combinedOutput ? `\`\`\`${combinedOutput}\`\`\`` : 'No additional output.';
+        
+        // Splice the formatted output
         if (formattedOutput.length > 1024) {
-            formattedOutput = formattedOutput.slice(0, 1020) + '...```'; // Truncate and close the code block if too long
+            const halfLength = 1024 / 2;
+            formattedOutput = formattedOutput.slice(0, halfLength) + '...\n...' + formattedOutput.slice(-halfLength);
+            formattedOutput += '```'; // Close the code block
         }
+
         const description = `Executing \`${action}\` action for **${service.name}**.\n\nHere's the output:\n\n${formattedOutput}`;
         sendFollowUpMessage(interactionToken, title, description, '', action);
     });
