@@ -5,9 +5,9 @@ After=network.target
 [Service]
 Type=simple
 User=chis
-WorkingDirectory=/hdd/discord-interactions-webhook
+WorkingDirectory=/home/chis/discord-interactions-webhook
 ExecStart=/usr/bin/npm start
-Restart=unless-stopped
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

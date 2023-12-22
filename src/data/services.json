@@ -2,21 +2,21 @@
   {
     "name": "Minecraft Server",
     "value": "minecraft",
-    "path": "/hdd/steam/minecraft",
+    "path": "/home/chis/steam/minecraft",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   },
   {
     "name": "Factorio Server",
     "value": "factorio",
-    "path": "/hdd/steam/factorio",
+    "path": "/home/chis/steam/factorio",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   },
   {
     "name": "Satisfactory Server",
     "value": "satisfactory",
-    "path": "/hdd/steam/satisfactory",
+    "path": "/home/chis/steam/satisfactory",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   }
