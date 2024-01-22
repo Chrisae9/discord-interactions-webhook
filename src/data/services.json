@@ -1,22 +1,29 @@
 [
   {
-    "name": "Minecraft Server",
+    "name": "Minecraft",
     "value": "minecraft",
     "path": "/home/chis/steam/minecraft",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   },
   {
-    "name": "Factorio Server",
+    "name": "Factorio",
     "value": "factorio",
     "path": "/home/chis/steam/factorio",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   },
   {
-    "name": "Satisfactory Server",
+    "name": "Satisfactory",
     "value": "satisfactory",
     "path": "/home/chis/steam/satisfactory",
+    "composeFile": "docker-compose.yaml",
+    "launchOptions": ""
+  },
+  {
+    "name": "Palworld",
+    "value": "palworld",
+    "path": "/home/chis/steam/palworld",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   }
