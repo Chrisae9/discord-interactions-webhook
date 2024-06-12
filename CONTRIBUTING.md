@@ -1,7 +1,7 @@
 
-# Contributing to Discord Interaction Webhook
+# Contributing to Discord Interactions Webhook
 
-We welcome contributions to the Discord Interaction Webhook project! Whether you're reporting bugs, improving the documentation, or contributing code, your help is greatly appreciated.
+We welcome contributions to the Discord Interactions Webhook project! Whether you're reporting bugs, improving the documentation, or contributing code, your help is greatly appreciated.
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
@@ -23,23 +23,23 @@ To get started with contributing to the project, follow these steps:
 1. **Fork the Repository**: Click the "Fork" button at the top right of this page to create a copy of the repository on your GitHub account.
 2. **Clone Your Fork**: Clone your forked repository to your local machine:
    ```sh
-   git clone https://github.com/your-username/discord-interaction-webhook.git
+   git clone https://github.com/Chrisae9/discord-interactions-webhook.git
    ```
 3. **Set Upstream Remote**: Set the original repository as the upstream remote:
    ```sh
-   cd discord-interaction-webhook
-   git remote add upstream https://github.com/Chrisae9/discord-interaction-webhook.git
+   cd discord-interactions-webhook
+   git remote add upstream https://github.com/Chrisae9/discord-interactions-webhook.git
    ```
 
 ## How to Contribute
 
 ### Reporting Bugs
 
-If you find a bug, please report it by creating an issue in the [GitHub Issue Tracker](https://github.com/Chrisae9/discord-interaction-webhook/issues). Include as much detail as possible, including steps to reproduce the bug, the environment you're using, and any relevant log output.
+If you find a bug, please report it by creating an issue in the [GitHub Issue Tracker](https://github.com/Chrisae9/discord-interactions-webhook/issues). Include as much detail as possible, including steps to reproduce the bug, the environment you're using, and any relevant log output.
 
 ### Suggesting Enhancements
 
-If you have an idea for an enhancement or new feature, please create an issue in the [GitHub Issue Tracker](https://github.com/Chrisae9/discord-interaction-webhook/issues). Provide a clear description of the enhancement and why it would be beneficial to the project.
+If you have an idea for an enhancement or new feature, please create an issue in the [GitHub Issue Tracker](https://github.com/Chrisae9/discord-interactions-webhook/issues). Provide a clear description of the enhancement and why it would be beneficial to the project.
 
 ### Contributing Code
 
@@ -94,6 +94,3 @@ Most of the setup can be inferred from the basic [README](README.md), but for lo
 
 By contributing to this project, you agree that your contributions will be licensed under the [MIT License](LICENSE).
 
-## Code of Conduct
-
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.

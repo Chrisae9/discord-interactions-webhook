@@ -1,4 +1,4 @@
-# Discord Interaction Webhook
+# Discord Interactions Webhook
 
 ## Table of Contents
 1. [Overview](#overview)
@@ -21,13 +21,13 @@ This application leverages Discord's Interaction API to manage Docker services v
 To quickly start the application, follow these steps:
 
 1. **Create the Project Folder**:
-   - Create a folder named `discord-interaction-webhook` to hold the `.env` file, the `docker-compose.yaml` file, and the `data` folder.
+   - Create a folder named `discord-interactions-webhook` to hold the `.env` file, the `docker-compose.yaml` file, and the `data` folder.
 
 2. **Create and Configure `.env` File**:
    - Create an application in the [Discord Developer Portal](https://discord.com/developers/applications).
    - In the **General Information** tab of your application, copy the `Application ID` and `Public Key`.
    - In the **Bot** tab of your application, generate a new token by clicking "Reset Token" and copy the `Bot Token`.
-   - Create a `.env` file in your `discord-interaction-webhook` folder with the following content:
+   - Create a `.env` file in your `discord-interactions-webhook` folder with the following content:
 
      ```env
      APPLICATION_ID=your_discord_application_id
@@ -42,7 +42,7 @@ To quickly start the application, follow these steps:
      - **Note**: You can grab Guild IDs and Role IDs by enabling developer mode in Discord settings and right-clicking on the role and server to copy their IDs. These are required for the bot to function properly and are highly recommended for security since the container has access to the Docker socket.
 
 3. **Create Data Directory**:
-   - Create a `data` directory in your `discord-interaction-webhook` folder to persist data.
+   - Create a `data` directory in your `discord-interactions-webhook` folder to persist data.
 
 4. **Manage Discord Commands**:
    - **Pull Commands**: Populate `data/commands.json` with current commands from Discord by running:
@@ -115,7 +115,7 @@ To quickly start the application, follow these steps:
 To build and run the application using Docker Compose, use the following steps:
 
 1. **Create a `docker-compose.yaml` File**:
-   - Create a `docker-compose.yaml` file in your `discord-interaction-webhook` folder with the following content:
+   - Create a `docker-compose.yaml` file in your `discord-interactions-webhook` folder with the following content:
 
      ```yaml
      services:
