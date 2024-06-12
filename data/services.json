@@ -2,28 +2,21 @@
   {
     "name": "Minecraft",
     "value": "minecraft",
-    "path": "/home/chis/steam/minecraft",
+    "path": "/path/to/minecraft",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   },
   {
     "name": "Factorio",
     "value": "factorio",
-    "path": "/home/chis/steam/factorio",
+    "path": "/path/to/factorio",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   },
   {
     "name": "Satisfactory",
     "value": "satisfactory",
-    "path": "/home/chis/steam/satisfactory",
-    "composeFile": "docker-compose.yaml",
-    "launchOptions": ""
-  },
-  {
-    "name": "Palworld",
-    "value": "palworld",
-    "path": "/home/chis/steam/palworld",
+    "path": "/path/to/satisfactory",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   }
