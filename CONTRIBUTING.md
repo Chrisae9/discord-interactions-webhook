@@ -71,9 +71,25 @@ Most of the setup can be inferred from the basic [README](README.md), but for lo
   make pull
   make push
   ```
-- **Development Environment**: Open an interactive window where you can run `npm run start`.
+- **Run the Application**: Start the application using:
   ```sh
   make dev
+  ```
+- **Open a Shell in the Container**: Use this command to open a shell in the container:
+  ```sh
+  make shell
+  ```
+- **Test Docker Environment**: Check if the Docker environment is set up correctly, including Docker group ID and user permissions:
+  ```sh
+  make docker-test
+  ```
+- **Environment Variables Check**: Verify that the environment variables are correctly loaded into the container:
+  ```sh
+  make env-check
+  ```
+- **Service Check**: Run a test Docker Compose file from the services directory to ensure services are configured correctly:
+  ```sh
+  make service-check
   ```
 
 ## Style Guides
@@ -93,4 +109,3 @@ Most of the setup can be inferred from the basic [README](README.md), but for lo
 ## License
 
 By contributing to this project, you agree that your contributions will be licensed under the [MIT License](LICENSE).
-
