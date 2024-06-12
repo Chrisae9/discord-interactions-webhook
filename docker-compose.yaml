@@ -3,10 +3,11 @@ services:
     image: chrisae9/discord-webhook-service:latest
     container_name: discord-webhook-service
     restart: unless-stopped
-    ports:
-      - "5000:5000"
     env_file:
       - .env
+    ports:
+      - 5000:5000
     volumes:
       - ./data:/app/src/data
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./services:/services

@@ -1,0 +1,9 @@
+# Ignore everything
+**
+
+# Whitelist
+!src/
+!package.json
+!package-lock.json
+!entrypoint.sh
+

@@ -1,22 +1,8 @@
 [
   {
-    "name": "Minecraft",
-    "value": "minecraft",
-    "path": "/path/to/minecraft",
-    "composeFile": "docker-compose.yaml",
-    "launchOptions": ""
-  },
-  {
-    "name": "Factorio",
-    "value": "factorio",
-    "path": "/path/to/factorio",
-    "composeFile": "docker-compose.yaml",
-    "launchOptions": ""
-  },
-  {
-    "name": "Satisfactory",
-    "value": "satisfactory",
-    "path": "/path/to/satisfactory",
+    "name": "example",
+    "value": "service",
+    "path": "/services/example",
     "composeFile": "docker-compose.yaml",
     "launchOptions": ""
   }
