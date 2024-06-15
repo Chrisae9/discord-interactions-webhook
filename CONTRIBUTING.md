@@ -91,6 +91,11 @@ Most of the setup can be inferred from the basic [README](README.md), but for lo
   ```sh
   make service-check
   ```
+- **Cron Job Check:** Verify that the cron job is set up correctly for the node user:
+  ```sh
+  make cron-check
+  ```
+
 
 ## Style Guides
 
