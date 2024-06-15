@@ -55,7 +55,7 @@ To quickly start the application, follow these steps:
 4. **Manage Discord Commands**:
    - **Pull Commands**: Populate `data/commands.json` with current commands from Discord by running:
      ```sh
-     docker run --env-file .env -v $(pwd)/data:/app/src/data --rm chrisae9/discord-webhook-service:latest npm run pull
+     docker run --env-file .env -v ./data:/app/src/data --rm chrisae9/discord-webhook-service:latest /bin/sh -c "npm run pull"
      ```
    - **Update Commands**: Modify `data/commands.json` to include the following structure:
      ```json
@@ -102,7 +102,7 @@ To quickly start the application, follow these steps:
 
    - **Push Commands**: Apply the updated commands by running:
      ```sh
-     docker run --env-file .env -v $(pwd)/data:/app/src/data --rm chrisae9/discord-webhook-service:latest npm run push
+     docker run --env-file .env -v ./data:/app/src/data --rm chrisae9/discord-webhook-service:latest /bin/sh -c "npm run push"
      ```
 
    - Refer to the [`service.json`](/data/services.json) in the repository's [data](/data) folder to configure services:
@@ -139,6 +139,7 @@ To build and run the application using Docker Compose, use the following steps:
          volumes:
            - ./data:/app/src/data
            - /var/run/docker.sock:/var/run/docker.sock
+           - ./services:/services
      ```
 
 2. **Start the Application**:
@@ -147,13 +148,26 @@ To build and run the application using Docker Compose, use the following steps:
      docker-compose up -d
      ```
 
+   - **About the `./services` Directory**:
+     - The `./services` directory will be mounted to `/services` in the container. This directory is used to specify paths or directories to services' Docker Compose files in the `service.json` configuration. You can add your own mounts to this directory.
+     - It is recommended to copy the structure from the repository's [`services/example/docker-compose.yaml`](./services/example/docker-compose.yaml) to first test your services. Here is an example of how your `services.json` might look:
+       ```json
+       {
+         "name": "Example Service",
+         "value": "example-service",
+         "path": "/services/example",
+         "composeFile": "docker-compose.yaml",
+         "launchOptions": ""
+       }
+       ```
+
 ### Using Docker Run
 If you prefer not to use Docker Compose, you can run the application directly using `docker run` with the following command:
 
 1. **Run the Docker Container**:
    - Use the following command to start the application:
      ```sh
-     docker run --env-file .env -v $(pwd)/data:/app/src/data -v /var/run/docker.sock:/var/run/docker.sock -p 5000:5000 --name discord-webhook-service chrisae9/discord-webhook-service:latest
+     docker run --env-file .env -v ./services:/services -v ./data:/app/src/data -v /var/run/docker.sock:/var/run/docker.sock -p 5000:5000 --name discord-webhook-service chrisae9/discord-webhook-service:latest
      ```
 
 ## Configuring Cron Job
