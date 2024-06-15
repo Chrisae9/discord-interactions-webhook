@@ -21,5 +21,18 @@ fi
 # Change the ownership of the application files to the node user
 chown -R node:node /app
 
+# Setup cron job if enabled
+if [ "$SHUTDOWN_ENABLED" = "true" ]; then
+  # Set the timezone if provided
+  if [ -n "$TZ" ]; then
+    echo "Setting timezone to $TZ..."
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+  fi
+  
+  echo "Setting up cron job to run at $SHUTDOWN_TIME for node user..."
+  echo "$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh" > /var/spool/cron/crontabs/node
+  crond -l 0 -b
+fi
+
 # Switch to node user and run the main container command
 exec su-exec node "$@"

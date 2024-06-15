@@ -5,8 +5,9 @@
 2. [Features](#features)
 3. [Quick Start](#quick-start)
 4. [Running the Application](#running-the-application)
-5. [License](#license)
-6. [Contributing](#contributing)
+5. [Configuring Cron Job](#configuring-cron-job)
+6. [License](#license)
+7. [Contributing](#contributing)
 
 ## Overview
 This application leverages Discord's Interaction API to manage Docker services via Discord commands. Built with Node.js, it offers a convenient way to dynamically manage Docker services using Discord's slash commands with autocomplete functionality.
@@ -37,6 +38,13 @@ To quickly start the application, follow these steps:
 
      ALLOWED_GUILD_IDS=allowed_guild_id
      ALLOWED_ROLE_IDS=allowed_role_id
+
+     # Cron job configuration
+     SHUTDOWN_ENABLED=false
+     SHUTDOWN_TIME="0 3 * * *"
+     
+     # Timezone
+     TZ=America/New_York
      ```
 
      - **Note**: You can grab Guild IDs and Role IDs by enabling developer mode in Discord settings and right-clicking on the role and server to copy their IDs. These are required for the bot to function properly and are highly recommended for security since the container has access to the Docker socket.
@@ -108,6 +116,7 @@ To quickly start the application, follow these steps:
      }
      ```
      - **Note**: The `path` should point to a directory containing another Docker Compose file.
+     - **Important**: The `path` must be relative to the host, not the container. Ensure that the volume mounts in your Docker Compose or Docker Run commands align with these paths.
 
 ## Running the Application
 
@@ -146,6 +155,39 @@ If you prefer not to use Docker Compose, you can run the application directly us
      ```sh
      docker run --env-file .env -v $(pwd)/data:/app/src/data -v /var/run/docker.sock:/var/run/docker.sock -p 5000:5000 --name discord-webhook-service chrisae9/discord-webhook-service:latest
      ```
+
+## Configuring Cron Job
+
+The application includes a cron job feature to automatically shut down services at a specified time. This can be enabled and configured via the `.env` file.
+
+### Configuration
+
+1. **Enable Cron Job**:
+   - Set `SHUTDOWN_ENABLED` to `true` in your `.env` file.
+     ```env
+     SHUTDOWN_ENABLED=true
+     ```
+
+2. **Set Shutdown Time**:
+   - Configure the `SHUTDOWN_TIME` variable in the `.env` file to specify when the services should be shut down. The time format is a standard cron format.
+     ```env
+     SHUTDOWN_TIME="0 3 * * *"  # Default: every day at 3 AM
+     ```
+
+3. **Set Timezone**:
+   - Configure the `TZ` variable in the `.env` file to set the timezone for the cron job.
+     ```env
+     TZ=America/New_York  # Default: America/New_York
+     ```
+
+### Cron Job Script
+
+The cron job script is located at `/usr/local/bin/shutdown-services.sh` inside the container. It reads the `services.json` file and runs `docker-compose down` for each configured service.
+
+### Note
+
+- The cron job feature is only activated if `SHUTDOWN_ENABLED` is set to `true` in the `.env` file.
+- Ensure the `TZ` environment variable is correctly set to match your desired timezone.
 
 ## Configure Interaction Endpoint URL
 - After running the container, configure an interaction endpoint URL in the Discord Developer Portal to point to your IP/domain, e.g., `https://yourdomain.com/interactions`.

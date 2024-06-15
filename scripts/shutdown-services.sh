@@ -1,9 +1,7 @@
-#!/bin/bash
-
-# 0 3 * * * $HOME/discord-interactions-webhook/scripts/shutdown-services.sh
+#!/bin/sh
 
 # Path to the services.json file
-servicesFile="$HOME/discord-interactions-webhook/src/data/services.json"
+servicesFile="/app/src/data/services.json"
 
 # Check if the services.json file exists
 if [ ! -f "$servicesFile" ]; then

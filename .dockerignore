@@ -6,4 +6,5 @@
 !package.json
 !package-lock.json
 !entrypoint.sh
+!scripts/shutdown-services.sh
 
