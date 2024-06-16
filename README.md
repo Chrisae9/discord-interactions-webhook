@@ -1,4 +1,7 @@
 # Discord Interactions Webhook
+![GitHub Release](https://img.shields.io/github/v/release/Chrisae9/discord-interactions-webhook)
+![Docker Pulls](https://img.shields.io/docker/pulls/chrisae9/discord-webhook-service)
+![GitHub License](https://img.shields.io/github/license/Chrisae9/discord-interactions-webhook)
 
 ## Table of Contents
 1. [Overview](#overview)
