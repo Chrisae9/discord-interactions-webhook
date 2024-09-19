@@ -37,9 +37,6 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
 
 # Shutdown services at specified time
 0 3 * * * /usr/local/bin/shutdown-services.sh
-
-# Echo test every minute
-* * * * * /bin/sh -c '/bin/echo "Cron Test: \$(/bin/date)" >> /proc/1/fd/1 2>&1'
 EOF
 
   # Install the cron jobs for node user

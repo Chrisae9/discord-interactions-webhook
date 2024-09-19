@@ -3,8 +3,8 @@ FROM node:22.2.0-alpine
 # Set the working directory
 WORKDIR /app
 
-# Install Docker, Docker Compose, su-exec, and jq
-RUN apk add --no-cache docker docker-compose jq su-exec busybox-suid
+# Install Docker, Docker Compose, su-exec, jq, and tzdata
+RUN apk add --no-cache docker docker-compose jq su-exec busybox-suid tzdata
 
 # Copy package.json and package-lock.json if it exists
 COPY package.json package-lock.json ./
