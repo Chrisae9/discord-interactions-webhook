@@ -31,7 +31,9 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
   
   echo "Setting up cron job to run at $SHUTDOWN_TIME for node user..."
   echo "$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh" > /var/spool/cron/crontabs/node
-  crond -l 0 -b
+  mkdir -p /var/log/cron
+  crond -b -l 2 > /var/log/cron/cron.log 2>&1
+
 fi
 
 # Switch to node user and run the main container command
