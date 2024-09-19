@@ -31,25 +31,35 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
   
   echo "Setting up cron jobs for node user..."
 
-  # Create a temporary cron file
+  # Create a temporary cron file with desired cron jobs
   cat <<EOF > /tmp/node_cron
 # Cron jobs for node user
 
 # Shutdown services at specified time
-$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh
+0 3 * * * /usr/local/bin/shutdown-services.sh
 
 # Echo test every minute
-* * * * * /bin/echo "Cron Test: \$(/bin/date)" >> /tmp/cron_test.log 2>&1
+* * * * * /bin/sh -c '/bin/echo "Cron Test: \$(/bin/date)" >> /proc/1/fd/1 2>&1'
 EOF
 
   # Install the cron jobs for node user
   crontab -u node /tmp/node_cron
 
-  # Ensure the log directory exists
-  mkdir -p /var/log/cron
+  # Ensure the crontab file has correct ownership and permissions
+  chown node:node /var/spool/cron/crontabs/node
+  chmod 600 /var/spool/cron/crontabs/node
 
-  # Start the cron daemon
-  crond -b -l 2 -L /var/log/cron/cron.log
+  # Ensure the log directory exists and is writable
+  mkdir -p /var/log/cron
+  touch /var/log/cron/cron.log
+  chown node:node /var/log/cron/cron.log
+  chmod 644 /var/log/cron/cron.log
+
+  # Start the cron daemon with enhanced logging
+  crond -b -l 8 -L /var/log/cron/cron.log
+
+  # Tail the cron log to stdout so it appears in Docker logs
+  tail -F /var/log/cron/cron.log &
 fi
 
 # Switch to node user and run the main container command
