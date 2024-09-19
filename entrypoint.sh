@@ -29,11 +29,27 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
   fi
   
-  echo "Setting up cron job to run at $SHUTDOWN_TIME for node user..."
-  echo "$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh" > /var/spool/cron/crontabs/node
-  mkdir -p /var/log/cron
-  crond -b -l 2 > /var/log/cron/cron.log 2>&1
+  echo "Setting up cron jobs for node user..."
 
+  # Create a temporary cron file
+  cat <<EOF > /tmp/node_cron
+# Cron jobs for node user
+
+# Shutdown services at specified time
+$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh
+
+# Echo test every minute
+* * * * * /bin/echo "Cron Test: \$(/bin/date)" >> /tmp/cron_test.log 2>&1
+EOF
+
+  # Install the cron jobs for node user
+  crontab -u node /tmp/node_cron
+
+  # Ensure the log directory exists
+  mkdir -p /var/log/cron
+
+  # Start the cron daemon
+  crond -b -l 2 -L /var/log/cron/cron.log
 fi
 
 # Switch to node user and run the main container command
