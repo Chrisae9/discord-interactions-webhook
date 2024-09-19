@@ -36,7 +36,7 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
 # Cron jobs for node user
 
 # Shutdown services at specified time
-0 3 * * * /usr/local/bin/shutdown-services.sh
+$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh
 EOF
 
   # Install the cron jobs for node user
