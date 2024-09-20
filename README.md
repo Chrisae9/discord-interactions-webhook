@@ -119,7 +119,7 @@ To quickly start the application, follow these steps:
      }
      ```
      - **Note**: The `path` should point to a directory containing another Docker Compose file.
-     - **Important**: The `path` must be relative to the host, not the container. Ensure that the volume mounts in your Docker Compose or Docker Run commands align with these paths.
+     - **Important**: The `path` must be relative to the container, not the host. Ensure that the volume mounts in your Docker Compose or Docker Run commands align with these paths.
 
 ## Running the Application
 
