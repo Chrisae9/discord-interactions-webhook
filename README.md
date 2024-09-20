@@ -194,7 +194,7 @@ The application includes a cron job feature to automatically shut down services 
 3. **Set Timezone**:
    - Configure the `TZ` variable in the `.env` file to set the timezone for the cron job.
      ```env
-     TZ=America/New_York  # Default: America/New_York
+     TZ=America/New_York  # Default: UTC
      ```
 
 ### Cron Job Script
