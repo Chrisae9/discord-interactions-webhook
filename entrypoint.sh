@@ -36,7 +36,7 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
 # Cron jobs
 
 # Shutdown services at specified time
-$SHUTDOWN_TIME node /usr/local/bin/shutdown-services.sh
+$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh >> /var/log/cron/cron.log 2>&1
 EOF
 
   # Ensure the crontab file has correct ownership and permissions
@@ -49,8 +49,8 @@ EOF
   chown root:root /var/log/cron/cron.log
   chmod 644 /var/log/cron/cron.log
 
-  # Start the cron daemon with enhanced logging
-  crond -b -l 8 -L /var/log/cron/cron.log
+  # Start the cron daemon with adjusted logging level to suppress unwanted messages
+  crond -b -l 6 -L /var/log/cron/cron.log
 
   # Tail the cron log to stdout so it appears in Docker logs
   tail -F /var/log/cron/cron.log &
