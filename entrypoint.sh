@@ -28,28 +28,25 @@ if [ "$SHUTDOWN_ENABLED" = "true" ]; then
     echo "Setting timezone to $TZ..."
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
   fi
-  
-  echo "Setting up cron jobs for node user..."
 
-  # Create a temporary cron file with desired cron jobs
-  cat <<EOF > /tmp/node_cron
-# Cron jobs for node user
+  echo "Setting up cron jobs..."
+
+  # Create the cron job file in /etc/crontabs/root
+  cat <<EOF > /etc/crontabs/root
+# Cron jobs
 
 # Shutdown services at specified time
-$SHUTDOWN_TIME /usr/local/bin/shutdown-services.sh
+$SHUTDOWN_TIME node /usr/local/bin/shutdown-services.sh
 EOF
 
-  # Install the cron jobs for node user
-  crontab -u node /tmp/node_cron
-
   # Ensure the crontab file has correct ownership and permissions
-  chown node:node /var/spool/cron/crontabs/node
-  chmod 600 /var/spool/cron/crontabs/node
+  chown root:root /etc/crontabs/root
+  chmod 600 /etc/crontabs/root
 
   # Ensure the log directory exists and is writable
   mkdir -p /var/log/cron
   touch /var/log/cron/cron.log
-  chown node:node /var/log/cron/cron.log
+  chown root:root /var/log/cron/cron.log
   chmod 644 /var/log/cron/cron.log
 
   # Start the cron daemon with enhanced logging
