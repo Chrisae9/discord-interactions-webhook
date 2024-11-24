@@ -8,10 +8,18 @@ let servicesLastModified = null;
 const servicesFilePath = path.join(__dirname, '../data/services.json');
 
 function loadServices() {
-    const stats = fs.statSync(servicesFilePath);
-    if (!servicesLastModified || stats.mtime > servicesLastModified) {
-        servicesLastModified = stats.mtime;
+    if (!servicesCache) {
         servicesCache = loadJsonFile('data/services.json');
+        servicesLastModified = fs.statSync(servicesFilePath).mtime;
+
+        // Watch for file changes and update cache accordingly
+        fs.watch(servicesFilePath, (eventType) => {
+            if (eventType === 'change') {
+                servicesCache = loadJsonFile('data/services.json');
+                servicesLastModified = fs.statSync(servicesFilePath).mtime;
+                console.log('Services cache updated due to file change');
+            }
+        });
     }
     return servicesCache;
 }
