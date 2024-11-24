@@ -31,6 +31,10 @@
           {
             "name": "stop",
             "value": "stop"
+          },
+          {
+            "name": "restart",
+            "value": "restart"
           }
         ]
       }

@@ -20,6 +20,9 @@ function runDockerCompose(serviceValue, action, interactionToken) {
         case 'stop':
             command = `docker-compose -f ${service.composeFile} down`;
             break;
+        case 'restart':
+            command = `docker-compose -f ${service.composeFile} down && docker-compose -f ${service.composeFile} up -d ${service.launchOptions || ''}`;
+            break;
         default:
             console.error(`Unknown action: ${action}`);
             sendFollowUpMessage(interactionToken, `Unknown action`, `Unknown action: ${action}`, '', 'error');
