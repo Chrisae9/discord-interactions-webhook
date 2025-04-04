@@ -31,6 +31,14 @@
           {
             "name": "stop",
             "value": "stop"
+          },
+          {
+            "name": "restart",
+            "value": "restart"
+          },
+          {
+            "name": "details",
+            "value": "details"
           }
         ]
       }

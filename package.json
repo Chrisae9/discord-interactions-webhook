@@ -1,6 +1,6 @@
 {
   "name": "discord-interactions-webhooks",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "A Discord Interactions Webhook to orchestrate services through Docker Compose on the host system.",
   "main": "server.js",
   "scripts": {
