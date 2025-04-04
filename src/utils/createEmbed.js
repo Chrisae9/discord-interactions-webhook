@@ -5,6 +5,7 @@ function actionColor(action) {
         case 'stop':
             return 0xdc3545; // Red
         case 'status':
+        case 'details':
             return 0x007bff; // Blue
         case 'denied':
             return 0xFFA500; // Orange

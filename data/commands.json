@@ -35,6 +35,10 @@
           {
             "name": "restart",
             "value": "restart"
+          },
+          {
+            "name": "details",
+            "value": "details"
           }
         ]
       }

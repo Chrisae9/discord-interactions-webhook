@@ -4,6 +4,16 @@
     "value": "service",
     "path": "/services/example",
     "composeFile": "docker-compose.yaml",
-    "launchOptions": ""
+    "launchOptions": "",
+    "details": {
+      "description": "This is an example service that runs the hello-world Docker image",
+      "connectionInfo": "No connection required - this is just a demonstration service",
+      "port": "N/A",
+      "credentials": {
+        "username": "N/A",
+        "password": "N/A"
+      },
+      "notes": "This service is used for testing purposes only"
+    }
   }
 ]
