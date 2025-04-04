@@ -73,21 +73,26 @@ function handleServiceDetails(service, interactionToken) {
     // Prepare the details message
     const details = service.details;
     
-    let description = `## Service Information for **${service.name}**\n\n`;
+    let description = '';
     
-    // Add description if available
+    // Add description if available (without header)
     if (details.description) {
-        description += `**Description:** ${details.description}\n\n`;
+        description += `${details.description}\n\n`;
     }
     
-    // Add connection information if available
-    if (details.connectionInfo) {
-        description += `**Connection Information:** ${details.connectionInfo}\n\n`;
-    }
-    
-    // Add port information if available
-    if (details.port && details.port !== 'N/A') {
-        description += `**Port:** ${details.port}\n\n`;
+    // Add consolidated connection information if available
+    if (details.connection) {
+        description += `**Connection:**\n${details.connection}\n\n`;
+    } else if (details.connectionInfo || (details.port && details.port !== 'N/A')) {
+        // Handle legacy format with separate connectionInfo and port
+        let connectionText = '';
+        if (details.connectionInfo) {
+            connectionText += details.connectionInfo;
+        }
+        if (details.port && details.port !== 'N/A') {
+            connectionText += connectionText ? ` (Port: ${details.port})` : `Port: ${details.port}`;
+        }
+        description += `**Connection:**\n${connectionText}\n\n`;
     }
     
     // Add credentials if available and not N/A
@@ -97,11 +102,11 @@ function handleServiceDetails(service, interactionToken) {
             description += `**Credentials:**\n`;
             
             if (creds.username !== 'N/A') {
-                description += `- Username: \`${creds.username}\`\n`;
+                description += `Username: \`${creds.username}\`\n`;
             }
             
             if (creds.password !== 'N/A') {
-                description += `- Password: \`${creds.password}\`\n`;
+                description += `Password: \`${creds.password}\`\n`;
             }
             
             description += `\n`;
@@ -110,17 +115,9 @@ function handleServiceDetails(service, interactionToken) {
     
     // Add notes if available
     if (details.notes) {
-        description += `**Notes:** ${details.notes}\n\n`;
+        description += `**Notes:**\n${details.notes}\n\n`;
     }
     
-    // Add service location details
-    description += `**Service Location:** \`${service.path}\`\n`;
-    description += `**Compose File:** \`${service.composeFile}\`\n`;
-    
-    if (service.launchOptions) {
-        description += `**Launch Options:** \`${service.launchOptions}\`\n`;
-    }
-
     // Send the details message
     sendFollowUpMessage(interactionToken, `Details: ${service.name}`, description, '', 'details');
 }

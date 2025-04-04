@@ -127,8 +127,7 @@ To quickly start the application, follow these steps:
        "launchOptions": "",
        "details": {
          "description": "Minecraft Version 1.8.9",
-         "connectionInfo": "minecraft.example.com",
-         "port": "25565",
+         "connection": "minecraft.example.com:25565",
          "credentials": {
            "username": "N/A",
            "password": "N/A"
@@ -182,8 +181,7 @@ To build and run the application using Docker Compose, use the following steps:
          "launchOptions": "",
          "details": {
            "description": "Example service description",
-           "connectionInfo": "server.example.com",
-           "port": "3000",
+           "connection": "server.example.com (Port: 3000)",
            "credentials": {
              "username": "username",
              "password": "password"

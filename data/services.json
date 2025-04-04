@@ -7,8 +7,7 @@
     "launchOptions": "",
     "details": {
       "description": "This is an example service that runs the hello-world Docker image",
-      "connectionInfo": "No connection required - this is just a demonstration service",
-      "port": "N/A",
+      "connection": "No connection required - this is just a demonstration service (Port: N/A)",
       "credentials": {
         "username": "N/A",
         "password": "N/A"
