@@ -98,14 +98,17 @@ function handleServiceDetails(service, interactionToken) {
     // Add credentials if available and not N/A
     if (details.credentials) {
         const creds = details.credentials;
-        if (creds.username !== 'N/A' || creds.password !== 'N/A') {
+        const hasUsername = creds.username && creds.username !== 'N/A';
+        const hasPassword = creds.password && creds.password !== 'N/A';
+        
+        if (hasUsername || hasPassword) {
             description += `**Credentials:**\n`;
             
-            if (creds.username !== 'N/A') {
+            if (hasUsername) {
                 description += `Username: \`${creds.username}\`\n`;
             }
             
-            if (creds.password !== 'N/A') {
+            if (hasPassword) {
                 description += `Password: \`${creds.password}\`\n`;
             }
             
