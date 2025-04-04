@@ -19,6 +19,7 @@ This application leverages Discord's Interaction API to manage Docker services v
 - 🚀 **Slash Commands with Autocomplete**: Easily execute predefined commands within Discord, with autocomplete making interactions smooth and user-friendly.
 - 🔄 **Dynamic Service Management**: Update your Docker services on-the-fly by changing the configuration file—no need to restart the container.
 - 🔒 **Role and Guild Restricted Access**: Ensure only authorized roles within specific Discord guilds can use the commands, enhancing security and control.
+- 📋 **Service Details**: View important connection information and credentials for services directly within Discord.
 
 ## Quick Start
 
@@ -93,6 +94,14 @@ To quickly start the application, follow these steps:
                {
                  "name": "stop",
                  "value": "stop"
+               },
+               {
+                 "name": "restart",
+                 "value": "restart"
+               },
+               {
+                 "name": "details",
+                 "value": "details"
                }
              ]
            }
@@ -115,7 +124,17 @@ To quickly start the application, follow these steps:
        "value": "minecraft",
        "path": "/path/to/minecraft",
        "composeFile": "docker-compose.yaml",
-       "launchOptions": ""
+       "launchOptions": "",
+       "details": {
+         "description": "Minecraft Version 1.8.9",
+         "connectionInfo": "minecraft.example.com",
+         "port": "25565",
+         "credentials": {
+           "username": "N/A",
+           "password": "N/A"
+         },
+         "notes": "Whitelist is enabled. Contact an admin to be added."
+       }
      }
      ```
      - **Note**: The `path` should point to a directory containing another Docker Compose file.
@@ -160,7 +179,17 @@ To build and run the application using Docker Compose, use the following steps:
          "value": "example-service",
          "path": "/services/example",
          "composeFile": "docker-compose.yaml",
-         "launchOptions": ""
+         "launchOptions": "",
+         "details": {
+           "description": "Example service description",
+           "connectionInfo": "server.example.com",
+           "port": "3000",
+           "credentials": {
+             "username": "username",
+             "password": "password"
+           },
+           "notes": "Please shut down server after use."
+         }
        }
        ```
 
